@@ -1,0 +1,16 @@
+[
+  {
+    "enabled": true,
+    "portalSku": "SITE-SKU-001",
+    "hesabfaCode": "000001",
+    "title": "نام محصول نمونه",
+    "notes": "نمونه برای تست"
+  },
+  {
+    "enabled": false,
+    "portalSku": "SITE-SKU-002",
+    "hesabfaCode": "000002",
+    "title": "محصول غیرفعال",
+    "notes": "این کالا در سایت سینک نمی‌شود"
+  }
+]

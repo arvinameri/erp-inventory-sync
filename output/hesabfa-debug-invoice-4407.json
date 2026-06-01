@@ -1,0 +1,184 @@
+{
+  "invoice_get": {
+    "ok": true,
+    "status": 200,
+    "url": "https://api.hesabfa.com/v1/invoice/get",
+    "body": {
+      "Success": true,
+      "ErrorCode": 0,
+      "ErrorMessage": "",
+      "Result": {
+        "Id": 3971,
+        "Number": "4407",
+        "Reference": "order_164659704",
+        "Date": "2026-05-25T00:00:00",
+        "DueDate": "2026-05-25T00:00:00",
+        "ContactCode": "055558",
+        "Contact": {
+          "Id": 55572,
+          "Code": "055558",
+          "Name": "تستی",
+          "Company": "",
+          "ContactType": 1,
+          "NationalCode": "",
+          "EconomicCode": "",
+          "RegistrationNumber": "",
+          "FirstName": "تستی",
+          "LastName": "",
+          "Email": "",
+          "Address": "",
+          "Country": "",
+          "City": "",
+          "State": "",
+          "PostalCode": "",
+          "Phone": "",
+          "Fax": "",
+          "Mobile": "09171897053",
+          "ContactEmail": "",
+          "Website": "",
+          "Note": "",
+          "IsShareHolder": false,
+          "IsCustomer": true,
+          "IsVendor": false,
+          "SharePercent": 0,
+          "Liability": 0,
+          "Credits": 0,
+          "ContactCredit": 0,
+          "HesabfaKey": 0,
+          "NodeId": 3,
+          "NodeName": "اشخاص",
+          "NodeFamily": "اشخاص",
+          "Tag": "portal_user_162575402",
+          "Active": true,
+          "TaxType": 5,
+          "BirthDate": null,
+          "WeddingDate": null,
+          "MembershipDate": null
+        },
+        "ContactTitle": "تستی",
+        "Sum": 335000000,
+        "Payable": 336806640,
+        "Paid": 336806640,
+        "Rest": 0,
+        "Freight": 1806640,
+        "FreightPersonCode": "",
+        "FreightPersonName": "",
+        "Note": "سفارش شماره 164659704 از سایت",
+        "Sent": false,
+        "Returned": false,
+        "InvoiceType": 0,
+        "Status": 1,
+        "InvoiceItems": [
+          {
+            "Id": 5802,
+            "RowNumber": 0,
+            "Description": "گوشی موبایل شیائومی استوک مدل Redmi Note 14 4G دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت\r\nرنگ: سبز، تاریخچه تعمیرات: تاریخچه تعمیرات را مطالعه کرده ام",
+            "ItemCode": null,
+            "Item": {
+              "Id": 2593,
+              "Code": "001201",
+              "Name": "گوشی موبایل شیائومی استوک مدل Redmi Note 14 4G دو سیم کارت ظرفیت 256 گیگابایت و رم 8 گیگابایت رنگ: سبز، تاریخچه تعمیرات: تاریخچه تعمیرات را مطالعه کرده ام",
+              "ItemType": 1,
+              "Unit": "عدد",
+              "SubUnit": "",
+              "ConversionFactor": 1,
+              "Barcode": "",
+              "Stock": 0,
+              "BuyPrice": 0,
+              "SellPrice": 0,
+              "PurchasesTitle": "",
+              "SalesTitle": "",
+              "NodeId": 2,
+              "NodeName": "خدمات",
+              "NodeFamily": "خدمات",
+              "Tag": "",
+              "Description": "",
+              "ProductCode": "",
+              "Active": true,
+              "TaxId": "",
+              "TaxUnit": "",
+              "ReorderPoint": 0,
+              "LeadTime": 0,
+              "MinimumOrder": 0,
+              "PriceList": null
+            },
+            "Quantity": 1,
+            "Unit": "عدد",
+            "UnitPrice": 335000000,
+            "Sum": 335000000,
+            "Discount": 0,
+            "Tax": 0,
+            "TotalAmount": 335000000,
+            "SerialNumbers": []
+          }
+        ],
+        "Tag": "API",
+        "WarehouseReceiptStatus": 2,
+        "Project": "",
+        "SalesmanCode": "000001",
+        "SalesmanPercent": 0,
+        "Others": [],
+        "Currency": "IRR",
+        "CurrencyRate": 1,
+        "TaxId": "",
+        "Profit": 335000000
+      }
+    }
+  },
+  "save_payment_sample_shape": {
+    "ok": true,
+    "status": 200,
+    "url": "https://api.hesabfa.com/v1/invoice/savePayment",
+    "body": {
+      "Success": true,
+      "ErrorCode": 0,
+      "ErrorMessage": "",
+      "Result": {
+        "Id": 3681,
+        "Number": 4168,
+        "DateTime": "2026-05-25T00:00:00",
+        "Description": "debug",
+        "Amount": 1,
+        "Currency": "IRR",
+        "CurrencyRate": 1,
+        "Project": "",
+        "Items": [
+          {
+            "Contact": {
+              "Id": 55572,
+              "Code": "055558",
+              "Name": "تستی"
+            },
+            "Account": "دارایی ها : دارایی های جاری : حساب های دریافتنی : حساب های دریافتنی",
+            "Amount": 1,
+            "Description": "debug"
+          }
+        ],
+        "Transactions": [
+          {
+            "Bank": null,
+            "Cash": {
+              "Id": 9,
+              "Code": "0009",
+              "Name": "درگاه پرداخت وب سایت"
+            },
+            "PettyCash": null,
+            "Contact": null,
+            "Check": null,
+            "Account": null,
+            "Type": 1,
+            "Reference": "DEBUG-1779714228386",
+            "TransactionFee": 0,
+            "Amount": 1
+          }
+        ],
+        "Invoice": {
+          "Id": 3971,
+          "Number": "4407",
+          "DateTime": "2026-05-25T00:00:00",
+          "InvoiceType": 0
+        }
+      }
+    }
+  }
+}

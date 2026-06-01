@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "generatedAt": "2026-05-19T09:16:01.863Z",
+  "summary": {
+    "portalVariantsCount": 22,
+    "portalVariantsWithBarcodeCount": 0,
+    "portalVariantsWithoutBarcodeCount": 22,
+    "hesabfaItemsCount": 1099,
+    "hesabfaItemsWithBarcodeCount": 1095,
+    "matchedCount": 0,
+    "unmatchedCount": 0,
+    "excludedCount": 0
+  },
+  "unmatched": []
+}

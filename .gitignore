@@ -1,0 +1,25 @@
+# Security
+.env
+.env.*
+*.pem
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Logs & Temporary Files
+logs/
+*.log
+npm-debug.log*
+tmp-*.json
+
+# Personal & Specific Files
+arvin.txt
+deletproducts.json
+test-sync.ps1
+1-Install.bat
+2-Start-Bot.bat
+
+# OS Files
+.DS_Store
+Thumbs.db

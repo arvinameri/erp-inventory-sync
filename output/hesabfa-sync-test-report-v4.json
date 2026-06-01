@@ -1,0 +1,163 @@
+{
+  "startedAt": "2026-05-25T13:13:16.432Z",
+  "ok": false,
+  "selectedOrderId": "164659704",
+  "checks": [
+    {
+      "name": "env:HESABFA_API_KEY",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_LOGIN_TOKEN",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_BASE_URL",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_AUTH_HEADER_VALUE",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_WAREHOUSE_CODE",
+      "ok": true,
+      "value": 11
+    },
+    {
+      "name": "env:HESABFA_CASH_CODE",
+      "ok": true,
+      "value": "0009"
+    },
+    {
+      "name": "env:HESABFA_DEFAULT_ITEM_TYPE_is_goods",
+      "ok": true,
+      "value": 0
+    },
+    {
+      "name": "portal:list_orders_loaded",
+      "ok": true,
+      "count": 12
+    },
+    {
+      "name": "selected_order_id",
+      "ok": true,
+      "orderId": "164659704"
+    },
+    {
+      "name": "portal:get_order",
+      "ok": true,
+      "orderId": 164659704
+    },
+    {
+      "name": "portal:order_marked_paid",
+      "ok": true,
+      "statuses": [
+        "fulfilled",
+        "paid",
+        "shipping_required"
+      ]
+    },
+    {
+      "name": "portal:items_exist",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "portal:sku_exists",
+      "ok": true,
+      "codes": [
+        "000864"
+      ]
+    },
+    {
+      "name": "hesabfa:quantity_loaded",
+      "ok": true,
+      "rows": 1,
+      "warehouseCode": 11
+    },
+    {
+      "name": "hesabfa:item_quantity_visible:000864",
+      "ok": true,
+      "code": "000864",
+      "quantity": 1
+    },
+    {
+      "name": "hesabfa:item_exists:000864",
+      "ok": true,
+      "code": "000864"
+    },
+    {
+      "name": "hesabfa:item_is_goods:000864",
+      "ok": true,
+      "code": "000864",
+      "itemType": 0
+    },
+    {
+      "name": "hesabfa:invoice_linked_to_order",
+      "ok": true,
+      "invoiceNumber": "4407",
+      "orderId": "164659704"
+    },
+    {
+      "name": "hesabfa:invoice_status_confirmed",
+      "ok": true,
+      "status": 1
+    },
+    {
+      "name": "hesabfa:warehouse_receipt_status",
+      "ok": true,
+      "warehouseReceiptStatus": 2
+    },
+    {
+      "name": "hesabfa:invoice_reference_ok",
+      "ok": true,
+      "reference": "order_164659704"
+    },
+    {
+      "name": "hesabfa:invoice_has_items",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "hesabfa:invoice_contains_code:000864",
+      "ok": false,
+      "code": "000864",
+      "invoiceCodes": [
+        "001201"
+      ]
+    },
+    {
+      "name": "hesabfa:invoice_items_are_goods",
+      "ok": false,
+      "invoiceItemTypes": [
+        1
+      ]
+    },
+    {
+      "name": "hesabfa:receipt_savePayment_ok",
+      "ok": true,
+      "receiptNumber": 4172,
+      "transactionNumber": "VERIFY-4407-1779714799378"
+    },
+    {
+      "name": "hesabfa:receipt_cash_code_ok",
+      "ok": true,
+      "expectedCashCode": "0009",
+      "transactionNumber": "VERIFY-4407-1779714799378"
+    },
+    {
+      "name": "hesabfa:idempotency_same_invoice",
+      "ok": true,
+      "first": "4407",
+      "second": "4407"
+    }
+  ],
+  "notes": [
+    "کد(های) آیتم فاکتور با SKU سفارش یکی نیستند. portal=[\"000864\"] invoice=[\"001201\"]"
+  ]
+}

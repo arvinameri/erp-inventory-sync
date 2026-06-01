@@ -1,0 +1,32 @@
+{
+  "name": "inventory-sync",
+  "version": "1.0.0",
+  "description": "Hesabfa to Portal inventory synchronization service",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "check": "node -e \"console.log('project is ready')\"",
+    "export:unmatched": "node scripts/export-unmatched-inventory.mjs"
+  },
+  "keywords": [
+    "hesabfa",
+    "portal",
+    "inventory",
+    "sync",
+    "middleware"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "jalaali-js": "^1.2.8",
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3"
+  }
+}

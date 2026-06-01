@@ -1,0 +1,84 @@
+{
+  "startedAt": "2026-05-25T12:52:24.388Z",
+  "ok": true,
+  "selectedOrderId": "164659704",
+  "checks": [
+    {
+      "name": "env:HESABFA_API_KEY",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_LOGIN_TOKEN",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_BASE_URL",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_AUTH_HEADER_VALUE",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "portal:list_orders_loaded",
+      "ok": true,
+      "count": 12
+    },
+    {
+      "name": "selected_order_id",
+      "ok": true,
+      "orderId": "164659704"
+    },
+    {
+      "name": "portal:get_order",
+      "ok": true,
+      "orderId": 164659704
+    },
+    {
+      "name": "portal:order_status_read",
+      "ok": true,
+      "statuses": [
+        "fulfilled",
+        "paid",
+        "shipping_required"
+      ]
+    },
+    {
+      "name": "portal:items_exist",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "portal:sku_exists",
+      "ok": true,
+      "codes": [
+        "000864"
+      ]
+    },
+    {
+      "name": "hesabfa:quantity_loaded",
+      "ok": true,
+      "checkedCodes": 1
+    },
+    {
+      "name": "hesabfa:invoice_linked_to_order",
+      "ok": true,
+      "invoiceNumber": "4407",
+      "orderId": "164659704"
+    },
+    {
+      "name": "hesabfa:invoice_status_confirmed",
+      "ok": true,
+      "status": 1
+    },
+    {
+      "name": "hesabfa:warehouse_receipt_status",
+      "ok": true,
+      "warehouseReceiptStatus": 2
+    }
+  ]
+}

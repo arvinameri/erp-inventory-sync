@@ -1,0 +1,151 @@
+{
+  "startedAt": "2026-05-25T12:59:48.048Z",
+  "ok": false,
+  "selectedOrderId": "164659704",
+  "checks": [
+    {
+      "name": "env:HESABFA_API_KEY",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_LOGIN_TOKEN",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_BASE_URL",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_AUTH_HEADER_VALUE",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_WAREHOUSE_CODE",
+      "ok": true,
+      "value": 11
+    },
+    {
+      "name": "env:HESABFA_CASH_CODE",
+      "ok": true,
+      "value": "0009"
+    },
+    {
+      "name": "env:HESABFA_DEFAULT_ITEM_TYPE_is_goods",
+      "ok": true,
+      "value": 0
+    },
+    {
+      "name": "portal:list_orders_loaded",
+      "ok": true,
+      "count": 12
+    },
+    {
+      "name": "selected_order_id",
+      "ok": true,
+      "orderId": "164659704"
+    },
+    {
+      "name": "portal:get_order",
+      "ok": true,
+      "orderId": 164659704
+    },
+    {
+      "name": "portal:order_marked_paid",
+      "ok": true,
+      "statuses": [
+        "fulfilled",
+        "paid",
+        "shipping_required"
+      ]
+    },
+    {
+      "name": "portal:items_exist",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "portal:sku_exists",
+      "ok": true,
+      "codes": [
+        "000864"
+      ]
+    },
+    {
+      "name": "hesabfa:quantity_loaded",
+      "ok": true,
+      "rows": 1,
+      "warehouseCode": 11
+    },
+    {
+      "name": "hesabfa:item_quantity_visible:000864",
+      "ok": true,
+      "code": "000864",
+      "quantity": 1
+    },
+    {
+      "name": "hesabfa:item_exists:000864",
+      "ok": true,
+      "code": "000864"
+    },
+    {
+      "name": "hesabfa:item_is_goods:000864",
+      "ok": true,
+      "code": "000864",
+      "itemType": 0
+    },
+    {
+      "name": "hesabfa:invoice_linked_to_order",
+      "ok": true,
+      "invoiceNumber": "4407",
+      "orderId": "164659704"
+    },
+    {
+      "name": "hesabfa:invoice_status_confirmed",
+      "ok": true,
+      "status": 1
+    },
+    {
+      "name": "hesabfa:warehouse_receipt_status",
+      "ok": true,
+      "warehouseReceiptStatus": 2
+    },
+    {
+      "name": "hesabfa:invoice_reference_ok",
+      "ok": true,
+      "reference": "order_164659704"
+    },
+    {
+      "name": "hesabfa:invoice_has_items",
+      "ok": true,
+      "count": 1
+    },
+    {
+      "name": "hesabfa:invoice_contains_code:000864",
+      "ok": false,
+      "code": "000864",
+      "invoiceCodes": []
+    },
+    {
+      "name": "hesabfa:receipt_found_for_invoice",
+      "ok": false,
+      "count": 0,
+      "routeTried": "getPayments/getReceipts"
+    },
+    {
+      "name": "hesabfa:idempotency_same_invoice",
+      "ok": true,
+      "first": "4407",
+      "second": "4407"
+    }
+  ],
+  "notes": [
+    "receipt lookup skipped on /invoice/getPayments: 404 https://api.hesabfa.com/v1/invoice/getPayments :: ",
+    "receipt lookup skipped on /invoice/getPayments: 404 https://api.hesabfa.com/v1/invoice/getPayments :: ",
+    "receipt lookup skipped on /invoice/getReceipts: 404 https://api.hesabfa.com/v1/invoice/getReceipts :: ",
+    "اگر پروژه receipt را ثبت می‌کند ولی این API در اکانت شما لیست نمی‌دهد، باید مسیر receipt lookup را با مستندات/اکانت واقعی شما نهایی کنیم."
+  ]
+}

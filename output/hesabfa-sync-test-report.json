@@ -1,0 +1,39 @@
+{
+  "startedAt": "2026-05-25T12:48:11.919Z",
+  "env": {
+    "cashCode": "0009",
+    "warehouseCode": "11",
+    "portalBaseUrl": "https://emobiran.ir",
+    "hasPortalToken": true,
+    "hasHesabfaCreds": true
+  },
+  "checks": [
+    {
+      "name": "env:HESABFA_API_KEY",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:HESABFA_LOGIN_TOKEN",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_BASE_URL",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:PORTAL_TOKEN",
+      "ok": true,
+      "value": "set"
+    },
+    {
+      "name": "env:TEST_ORDER_ID",
+      "ok": true,
+      "value": "set"
+    }
+  ],
+  "ok": false,
+  "error": "404 https://emobiran.ir/site/api/v1/manage/store/orders/146659704 :: {\"error\":true,\"message\":\"not-found\",\"description\":\"سفارش پیدا نشد.\",\"context\":null}"
+}
