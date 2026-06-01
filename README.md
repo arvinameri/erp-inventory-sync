@@ -1,146 +1,172 @@
-# Inventory Sync
+<div align="center">
+  <h1>ERP-ECommerce Sync Middleware 🔄</h1>
 
-Middleware service for syncing product inventory from Hesabfa to Portal.
+  <p><b>Automated Inventory, Invoicing, and Customer Sync Engine</b></p>
 
-## هدف پروژه
+  <p>
+    A robust, asynchronous Node.js middleware designed to bidirectionally synchronize a high-traffic e-commerce portal with <b>Hesabfa</b> (cloud accounting/ERP software).
+  </p>
 
-این پروژه یک سرویس واسط بین حسابفا و سایت پرتال است.
+  <p>
+    <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white" alt="Node.js" />
+    <img src="https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white" alt="Express" />
+    <img src="https://img.shields.io/badge/REST_API-005571?style=flat&logo=routing&logoColor=white" alt="REST API" />
+    <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white" alt="Axios" />
+    <img src="https://img.shields.io/badge/Cron-0C0C0C?style=flat" alt="Node Cron" />
+  </p>
 
-هدف اصلی:
-
-- دریافت موجودی کالاها از حسابفا
-- تطبیق کالاهای حسابفا با محصولات/تنوع‌های سایت پرتال
-- به‌روزرسانی موجودی سایت بر اساس حسابفا
-- سینک فقط کالاهای قابل فروش در سایت
-- جلوگیری از سینک کالاهای غیرمرتبط مثل قطعات تعمیرات یا کالاهای داخلی
-- امکان اجرای دستی و زمان‌بندی‌شده سینک
-
-## ساختار کلی
-
-````text
-inventory-sync
-├── src
-│   ├── clients
-│   ├── config
-│   ├── controllers
-│   ├── data
-│   ├── jobs
-│   ├── routes
-│   ├── services
-│   └── utils
-├── logs
-├── package.json
-├── .env
-├── .env.example
-└── README.md
-
-## نصب وابستگی‌ها
-
-bash
-npm install
-
-## اجرای پروژه در حالت توسعه
-
-bash
-npm run dev
-
-## اجرای پروژه در حالت production
-
-bash
-npm start
-
-## تست سلامت سرویس
-
-بعد از اجرای پروژه:
-
-text
-GET http://localhost:3000/health
-
-## اجرای دستی سینک
-
-text
-POST http://localhost:3000/sync/run
-
-## فایل تنظیمات
-
-اطلاعات حساس مثل API Key و Token باید داخل فایل `.env` قرار بگیرند.
-
-نمونه فایل تنظیمات در `.env.example` قرار دارد.
-
-## مپینگ محصولات
-
-فایل مپینگ محصولات:
-
-text
-src/data/product-mapping.json
-
-در این فایل مشخص می‌شود که هر SKU سایت پرتال به کدام کد محصول در حسابفا وصل است.
-
-نمونه:
-
-json
-[
-  {
-"portalSku": "IPHONE-13-BLACK-128",
-"hesabfaCode": "1001",
-"enabled": true
-  }
-]
-
-فقط محصولاتی که `enabled` آن‌ها برابر `true` باشد سینک می‌شوند.
-
-## نکات امنیتی
-
-- فایل `.env` نباید commit شود.
-- API Key و Token نباید داخل سورس‌کد نوشته شوند.
-- فقط از مسیرهای مشخص‌شده برای اجرای عملیات استفاده شود.
-
+  <p>
+    <a href="#-getting-started">Getting Started</a>
+    ·
+    <a href="https://github.com/arvinameri/erp-inventory-sync/issues">Report Bug</a>
+    ·
+    <a href="https://www.linkedin.com/in/arvinameri">Connect on LinkedIn</a>
+  </p>
+</div>
 
 ---
 
-### `D:\hesabfa\inventory-sync\src\app.js`
+## 🧭 Overview
 
-```js
-import express from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
-import morgan from 'morgan';
+This middleware acts as an intelligent bridge between an online store and corporate accounting software. It eliminates manual data entry, prevents overselling of out-of-stock items, and ensures fiscal compliance by automatically generating accounting invoices the moment a customer makes a purchase online.
 
-import healthRoutes from './routes/health.routes.js';
-import syncRoutes from './routes/sync.routes.js';
+The system is highly resilient, featuring exponential backoff for API rate limits (HTTP 429), Idempotency keys to prevent duplicate invoices, and automated currency conversions (Tomans to Rials).
 
-const app = express();
+|                         |                                                                               |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| 📦 **Inventory Sync**   | Bi-directional SKU matching to update stock levels and pricing every 15 mins. |
+| 🧾 **Auto-Invoicing**   | Automatically creates Approved sales invoices & registers cashbox receipts.   |
+| 👥 **Customer Mapping** | Creates or links portal users to accounting contacts instantly.               |
+| 🛡️ **Rate-Limit Safe**  | Built-in queue management, staggered cron jobs, and jitter to avoid API bans. |
+| 🧪 **E2E Test Suite**   | Extensive PowerShell and Node.js test scripts ensuring zero data loss.        |
 
-app.use(helmet());
-app.use(cors());
-app.use(express.json({ limit: '1mb' }));
-app.use(morgan('dev'));
+---
 
-app.use('/health', healthRoutes);
-app.use('/sync', syncRoutes);
+## 🧱 Architecture & Tech Stack
 
-app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: 'Inventory Sync API is running',
-  });
-});
+| Layer                   | Technologies & Patterns                                      |
+| ----------------------- | ------------------------------------------------------------ |
+| **Runtime & Framework** | Node.js (ES Modules), Express.js                             |
+| **HTTP Clients**        | Axios with custom interceptors for retries & logging         |
+| **Job Scheduling**      | `node-cron` with overlapping execution prevention            |
+| **Error Handling**      | Centralized asynchronous error handler, HTTP status parsing  |
+| **Scripting / Testing** | Comprehensive automated scripts `.mjs` & PowerShell (`.ps1`) |
 
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: 'Route not found',
-  });
-});
+---
 
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
+## ✨ Key Technical Achievements
 
-  res.status(statusCode).json({
-    success: false,
-    message: err.message || 'Internal server error',
-  });
-});
+### 1. Robust Invoice & Receipt Generation
 
-export default app;
-````
+The system dynamically maps Portal Orders to Hesabfa accounting standards:
+
+- **Currency Conversion:** Automatically converts frontend pricing to accounting base currency.
+- **Fiscal Year Alignment:** Detects and shifts mismatched order dates to fit within the valid corporate fiscal year constraints to prevent `DateTime-Outside-Range` errors.
+- **Idempotency:** Checks existing references to completely prevent duplicate invoice generation.
+
+### 2. Algorithmic Rate-Limiting Prevention
+
+Addressed sudden API bursts (causing HTTP 429 errors) by optimizing the data-fetching architecture:
+
+- Implemented a unified `getAllVariants()` cache instead of generating $N+1$ requests per product.
+- Applied staggered cron schedules to prevent job collision.
+
+### 3. SKU-Based Smart Mapping
+
+Inventory sync relies strictly on exact `itemCode` matches, actively ignoring non-inventory families (e.g., Services, Software) based on pre-defined exclusion lists to keep the portal catalog clean.
+
+---
+
+## 📁 Repository Structure
+
+```text
+inventory-sync/
+├── src/
+│   ├── app.js & server.js    # Express application setup and entry points
+│   ├── config/               # Environment variable parsers & Winston loggers
+│   ├── controllers/          # Express route controllers
+│   ├── jobs/                 # Cron jobs (Sync, Invoice, Customer)
+│   ├── routes/               # API endpoint definitions
+│   ├── services/             # Core business logic (HesabfaService, PortalService)
+│   └── utils/                # Async handlers, custom error classes, validators
+│
+├── scripts/                  # Ad-hoc audit, debugging, and data export scripts
+├── tests/                    # End-to-End PowerShell and Node.js testing suite
+└── output/ & logs/           # Ignored log directories for sync reports
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 18
+- Access to Hesabfa API (API Key, Username, Password)
+- Access to E-Commerce Portal API (JWT/Bearer Token)
+
+### 1 — Clone the Repository
+
+```bash
+git clone https://github.com/arvinameri/erp-inventory-sync.git
+cd erp-inventory-sync
+```
+
+### 2 — Environment Setup
+
+Rename the template and provide the required credentials:
+
+```bash
+cp .env.example .env
+```
+
+### 3 — Installation
+
+```bash
+npm install
+```
+
+### 4 — Running the Server
+
+**Development Mode:**
+
+```bash
+npm run dev
+```
+
+**Production Mode:**
+
+```bash
+npm start
+```
+
+### 5 — Automated Testing
+
+Run the comprehensive test suite to ensure connectivity and logic validity:
+
+```powershell
+# Run the end-to-end invoice creation test (PowerShell)
+.\tests\test-invoice-full.ps1 -SkipFullSync
+```
+
+---
+
+## 🛡️ Security
+
+- **Credential Isolation:** All API keys and portal tokens are managed strictly via `.env`.
+- **Private Deployment:** Designed to be run securely on localized Windows/Linux environments within the corporate network.
+
+---
+
+<div align="center">
+  <h3>Built by Arvin Ameri</h3>
+  <p>📍 Amsterdam, Netherlands &nbsp;|&nbsp; Backend & Integration Engineer</p>
+  <p>
+    <a href="https://www.linkedin.com/in/arvinameri">
+      <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+    </a>
+    <a href="https://github.com/arvinameri">
+      <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+    </a>
+  </p>
+</div>
